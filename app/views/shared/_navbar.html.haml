@@ -1,7 +1,13 @@
 .w-full.flex.items.center.justify-center.max-w-screen-sm.mx-auto.p-6
-  .text-sm
+  .text-sm.flex.gap-2
     = active_link_to 'home', root_path, class: 'text-tertiaryText', class_active: 'text-primaryText', active: :exclusive
     %span /
     = active_link_to 'todos', todos_path, class: 'text-tertiaryText', class_active: 'text-primaryText', active: :exclusive
-    %span /
-    = active_link_to 'sign up', signup_path, class: 'text-tertiaryText', class_active: 'text-primaryText', active: :exclusive
+    - if @current_user
+      %span /
+      = button_to 'log out', logout_path, method: :delete, class: 'text-tertiaryText cursor-pointer hover:text-red-400'
+    - else
+      %span /
+      = active_link_to 'sign in', signin_path, class: 'text-tertiaryText', class_active: 'text-primaryText', active: :exclusive
+
+    = button_to 'log in', signin_path, class: 'text-tertiaryText cursor-pointer hover:text-primaryText'

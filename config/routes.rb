@@ -9,6 +9,11 @@ Rails.application.routes.draw do
   get "signup" => "signup#new"
   post "signup" => "signup#create"
 
+  get "signin" => "sessions#new"
+  post "signin" => "sessions#create"
+
+  delete "logout" => "sessions#destroy"
+
 
   root "home#index"
   # Defines the root path route ("/")

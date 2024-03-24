@@ -1,0 +1,14 @@
+-# signin form
+.max-w-screen-sm.mx-auto.mt-16
+  = form_with model: @user, url: signin_path, method: :post, class: 'flex flex-col' do |form|
+    = form.label :email, class: 'text-xs text-tertiaryText'
+    = form.email_field :email, class: 'p-2 px-3 border border-border rounded-md bg-active text-xs text-primaryText mb-4 mt-1 placeholder-tertiaryText', placeholder: 'your@email.domain'
+
+    = form.label :password, class: 'text-xs text-tertiaryText'
+    = form.password_field :password, class: 'p-2 px-3 border border-border rounded-md bg-active text-xs text-primaryText mb-4 mt-1 placeholder-tertiaryText', placeholder: 's0m3ComPLicAted!passW0rd'
+
+    = form.submit 'sign in', class: 'cursor-pointer hover:bg-red-300/20 p-1.5 px-4 bg-red-300/10 border border-border text-white rounded-md text-xs ml-auto'
+
+    %p.text-xs.text-tertiaryText.mt-2
+      Don't have an account?
+      = link_to 'sign up', signup_path, class: 'text-xs text-tertiaryText mt-2 cursor-pointer hover:text-red-300'
