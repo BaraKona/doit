@@ -1,5 +1,5 @@
 .h-full.flex.items-center.grow.justify-center.px-4
-  .text-center.max-w-screen-sm.-mt-40
+  .text-center.max-w-screen-sm.-mt-52
     %h1.text-4xl.font-bold.text-primaryText.mx-0.px-0.flex.items-center.justify-center
       Do
       .text-secondaryText.p-0.m-0
@@ -7,4 +7,4 @@
     %p.text-tertiaryText.text-lg.mt-4.text-sm.max-w-sm
       The simplest todo app you'll ever use. No clutter, no ads, no tracking. Just you and your todos.
     .mt-8
-      = active_link_to 'get started', todos_path, class: 'text-tertiaryText text-xs border border-tertiaryText hover:bg-[#ffffff05] px-4 py-2 rounded-md', active_class: 'text-primaryText bg-primaryText hover:bg-primaryText'
+      = active_link_to 'get started', todos_path, class: 'text-tertiaryText bg-active text-xs border border-border px-4 py-2 rounded-md hover:border-text-tertiaryText', active_class: 'text-primaryText bg-primaryText hover:bg-primaryText'

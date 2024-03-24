@@ -17,6 +17,8 @@ module.exports = {
 				primaryText: "#ffffff87",
 				secondaryText: "#ffffff60",
 				tertiaryText: "#ffffff38",
+				active: "#00000030",
+				border: "#ffffff10",
 			},
 		},
 	},
