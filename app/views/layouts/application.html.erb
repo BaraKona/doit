@@ -11,8 +11,9 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body>
-    <main class="bg-background h-screen text-text">
+  <body class='bg-background h-screen text-tertiaryText flex flex-col container mx-auto'>
+      <%= render partial: 'shared/navbar' %>
+    <main class="grow">
       <%= yield %>
     </main>
   </body>

@@ -32,6 +32,9 @@ gem "redis", ">= 4.0.1"
 #haml
 gem 'haml'
 
+# active_link_to
+gem 'active_link_to'
+
 # Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]
 # gem "kredis"
 

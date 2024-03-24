@@ -1,0 +1,5 @@
+.w-full.flex.items.center.justify-center.max-w-screen-sm.mx-auto.p-2
+  .text-sm
+    = active_link_to 'home', root_path, class: 'text-tertiaryText', class_active: 'text-[#ffffff83]', active: :exclusive
+    %span /
+    = active_link_to 'todos', todos_path, class: 'text-tertiaryText', class_active: 'text-[#ffffff83]', active: :exclusive
