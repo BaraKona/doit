@@ -1,11 +1,18 @@
-.w-full.flex.items.center.justify-center.max-w-screen-sm.mx-auto.p-6
-  .text-sm.flex.gap-2
-    = active_link_to 'home', root_path, class: 'text-tertiaryText hover:text-primaryText', class_active: 'text-gray-400', active: :exclusive
-    %span /
-    = active_link_to 'todos', todos_path, class: 'text-tertiaryText hover:text-primaryText', class_active: 'text-gray-400', active: :exclusive
+.w-full.flex.items.center.justify-center.max-w-screen-md.mx-auto.p-6
+  .text-sm.flex.gap-2.w-full.items-center.justify-between
     - if @current_user
+      .w-6.h-6
+    .flex.items-center.gap-2.mx-auto
+      = active_link_to 'home', root_path, class: 'text-tertiaryText hover:text-primaryText', class_active: 'text-gray-400', active: :exclusive
       %span /
-      = button_to 'log out', logout_path, method: :delete, class: 'text-tertiaryText cursor-pointer hover:text-red-400'
-    - else
-      %span /
-      = active_link_to 'sign in', signin_path, class: 'text-tertiaryText hover:text-primaryText', class_active: 'text-gray-400', active: /#{signin_path}|#{signup_path}/
+      = active_link_to 'todos', todos_path, class: 'text-tertiaryText hover:text-primaryText', class_active: 'text-gray-400', active: :exclusive
+      - if @current_user
+        %span /
+        = button_to 'log out', logout_path, method: :delete, class: 'text-tertiaryText cursor-pointer hover:text-red-400'
+      - else
+        %span /
+        = active_link_to 'sign in', signin_path, class: 'text-tertiaryText hover:text-primaryText', class_active: 'text-gray-400', active: /#{signin_path}|#{signup_path}/
+
+
+    - if @current_user
+      = image_tag "https://ui-avatars.com/api/?name=#{@current_user[:user_name]}&size=32&background=random", class: "w-6 h-6 rounded-full"
