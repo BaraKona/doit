@@ -11,10 +11,12 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body class='bg-background h-screen text-tertiaryText flex flex-col container mx-auto'>
+  <body class="bg-background">
+    <main class="h-screen text-tertiaryText flex flex-col container mx-auto">
       <%= render partial: 'shared/navbar' %>
-    <main class="grow">
+      <section class="grow">
       <%= yield %>
+      </section>
     </main>
   </body>
 </html>

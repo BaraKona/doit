@@ -1,5 +1,11 @@
 .max-w-screen-sm.mx-auto.mt-16
   = form_with model: @user, url: signup_path, method: :post, class: 'flex flex-col' do |form|
+    - if @user.errors.any?
+      .p-2.bg-red-300.border.border-red-300.rounded-md.text-xs.text-red-300.mb-4
+        %ul
+          - @user.errors.full_messages.each do |message|
+            %li= message
+
     = form.label :user_name, class: 'text-xs text-tertiaryText'
     = form.text_field :user_name, class: 'p-2 px-3 border border-border rounded-md bg-active text-xs text-primaryText mb-4 mt-1 placeholder-tertiaryText', placeholder: 'cool_user123', required: true
 
