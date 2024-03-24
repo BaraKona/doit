@@ -1,0 +1,15 @@
+.max-w-screen-sm.mx-auto.mt-16
+  = form_with model: @user, url: signup_path, method: :post, class: 'flex flex-col' do |form|
+    = form.label :user_name, class: 'text-xs text-tertiaryText'
+    = form.text_field :user_name, class: 'p-2 px-3 border border-border rounded-md bg-active text-xs text-primaryText mb-4 mt-1 placeholder-tertiaryText', placeholder: 'cool_user123', required: true
+
+    = form.label :email, class: 'text-xs text-tertiaryText'
+    = form.email_field :email, class: 'p-2 px-3 border border-border rounded-md bg-active text-xs text-primaryText mb-4 mt-1 placeholder-tertiaryText', placeholder: 'some@email.domain', required: true
+
+    = form.label :password, class: 'text-xs text-tertiaryText'
+    = form.password_field :password, class: 'p-2 px-3 border border-border rounded-md bg-active text-xs text-primaryText mb-4 mt-1 placeholder-tertiaryText', placeholder: 's0m3ComPLicAted!passW0rd', required: true
+
+    = form.label :password_confirmation, class: 'text-xs text-tertiaryText'
+    = form.password_field :password_confirmation, class: 'p-2 px-3 border border-border rounded-md bg-active text-xs text-primaryText mb-4 mt-1 placeholder-tertiaryText', placeholder: 's0m3ComPLicAted!passW0rd', required: true
+
+    = form.submit 'sign up', class: 'cursor-pointer hover:bg-red-300/20 p-1.5 px-4 bg-red-300/10 border border-border text-white rounded-md text-xs ml-auto'
