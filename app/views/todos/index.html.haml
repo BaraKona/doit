@@ -1,5 +1,8 @@
 .w-full.flex.max-w-screen-sm.mx-auto.p-2.my-12.flex-col.space-y-4
-  %input.w-full.p-2.px-3.border.border-border.rounded-md.bg-active.text-xs.text-primaryText.placeholder-tertiaryText{placeholder: '+ search or add todos', type: 'text'}
+  %input#todo-search.w-full.p-2.px-3.border.border-border.rounded-md.bg-active.text-xs.text-primaryText.placeholder-tertiaryText{placeholder: '+ search or add todos', type: 'text'}
+
+
+
 
   - if @todos.any?
     = render 'todo_list'
