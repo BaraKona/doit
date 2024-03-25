@@ -1,6 +1,7 @@
 -# signin form
 .max-w-screen-sm.mx-auto.mt-16
   = form_with model: @user, url: signin_path, method: :post, class: 'flex flex-col' do |form|
+
     = form.label :email, class: 'text-xs text-secondaryText'
     = form.email_field :email, class: 'p-2 px-3 border border-border rounded-md bg-active text-xs text-primaryText mb-4 mt-1 placeholder-tertiaryText', placeholder: 'your@email.domain'
 

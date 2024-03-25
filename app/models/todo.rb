@@ -14,4 +14,6 @@ class Todo < ApplicationRecord
   scope :medium, -> { where(priority: "medium") }
   scope :low, -> { where(priority: "low") }
 
+  belongs_to :user
+
 end

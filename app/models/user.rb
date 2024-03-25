@@ -11,5 +11,8 @@ class User < ApplicationRecord
   validates :email, presence: true, uniqueness: true, format: { with: /\A[^@\s]+@[^@\s]+\z/, message: "must be a valid email address"}
   validates :password, presence: true, confirmation: true, length: { minimum: 6, message: "must be at least 6 characters"}
   validates :user_name, presence: true, uniqueness: true, length: { minimum: 3, message: "must be at least 3 characters"}
+  validates :owner, presence: true
+
+  has_many :todos, foreign_key: :user_id, dependent: :destroy
 
 end

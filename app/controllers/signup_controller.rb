@@ -10,7 +10,8 @@ class SignupController < ApplicationController
       session[:user_id] = @user.id # Log in the user
       redirect_to todos_path # Redirect to the todos page
     else
-      render :new # Render the new view
+      flash[:alert] = @user.errors.full_messages.join(", ") # Set the flash alert message
+      render :new, status: :unprocessable_entity # Render the new view
     end
   end
 
