@@ -3,9 +3,9 @@
     - if Current.user
       .w-6.h-6
     .flex.items-center.gap-2.mx-auto
-      = active_link_to 'home', root_path, class: 'text-tertiaryText hover:text-primaryText', class_active: 'text-gray-400', active: :exclusive
+      = active_link_to 'home', root_path, class: 'text-tertiaryText hover:text-primaryText', class_active: '!text-primaryText', active: :exclusive
       %span /
-      = active_link_to 'todos', todos_path, class: 'text-tertiaryText hover:text-primaryText', class_active: 'text-gray-400', active: :exclusive
+      = active_link_to 'todos', todos_path(view: 'all'), class: 'text-tertiaryText hover:text-primaryText', class_active: '!text-primaryText', active: /#{todos_path(view:"all")}|#{todos_path(view:"create")}/
       - if Current.user
         %span /
         = button_to 'log out', logout_path, method: :delete, class: 'text-tertiaryText cursor-pointer hover:text-red-400'

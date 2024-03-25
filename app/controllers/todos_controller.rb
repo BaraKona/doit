@@ -1,16 +1,50 @@
 class TodosController < ApplicationController
+
   def index
-    @todos = Todo.all # Fetch all todos from the database
+    @todos = Todo.where(user_id: Current.user.id).order(priority: :desc)
   end
 
-  # create a new todo
   def create
     @todo = Todo.new(todo_params)
+    @todo.user_id = Current.user.id
+    @todo.status = Todo.statuses[:not_started]
     if @todo.save
-      render json: @todo, status: :created
+      redirect_to todos_path(view: 'all')
     else
-      render json: @todo.errors, status: :unprocessable_entity
+      render :index
     end
+  end
+
+  def new
+    @todo = Todo.new
+  end
+
+  def update
+    @todo = Todo.find_by(id: params[:todo][:id])
+
+    if @todo.blank?
+      flash[:alert] = "Todo not found"
+      @todos = Todo.where(user_id: Current.user.id).order(priority: :desc)
+      return render :index, status: :unprocessable_entity
+    end
+
+    logger.debug "Parameters: #{params.inspect}"
+    logger.debug "Todo before update: #{@todo.inspect}"
+
+    if @todo.update(todo_params)
+      logger.debug "Todo after update: #{@todo.inspect}"
+      redirect_to todos_path(view: 'all')
+    else
+      @todos = Todo.where(user_id: Current.user.id).order(priority: :desc)
+      render :index, status: :unprocessable_entity
+    end
+  end
+
+  private
+
+  def todo_params
+    puts params
+    params.require(:todo).permit(:title, :description, :priority, :id, :status)
   end
 
 end

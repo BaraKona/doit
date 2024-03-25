@@ -1,5 +1,24 @@
+-# haml-lint:disable LineLength
 .p-1
-  .text-semibold.text-sm.text-primaryText.mb-2
+  .text-semibold.text-sm.text-primaryText.mb-2.flex.gap-2.items-center
     completed
-
+    .text-xs.text-secondaryText
+      = "#{todos.count} items"
   %hr.border-border
+  .flex.gap-1.flex-col
+    - todos.each do |todo|
+      .flex.flex-col.border.gap-2.border-border.rounded-md.p-2{class: 'hover:bg-gray-400/10'}
+        .flex.items-center.w-full
+          .flex.items-center.w-full
+            = form_with model: todo, url: todos_path(view: 'all'), method: :patch, remote: true, class: "flex items-center" do |form|
+              = form.check_box :status,value: todo.status === 'completed' ? 'not_started' : 'completed', class: 'mr-2 rounded-md border border-border p-1 bg-active active:bg-active/90 cursor-pointer text-primaryText', onchange: 'this.form.submit()', checked: todo.status === 'completed'
+              = form.hidden_field :status, value: todo.status === 'completed' ? 'not_started' : 'completed'
+              = form.hidden_field :id, value: todo.id
+              .text-xs.text-primaryText{class: if todo.status === 'completed' then 'line-through !text-tertiaryText' end}
+                = todo.title
+          - if todo.priority.present?
+            .text-xs{class: if todo.priority == 'high' then 'text-red-400' elsif todo.priority == 'medium' then 'text-yellow-200' else 'text-emerald-400' end}
+              = todo.priority
+        - if todo.description.present?
+          .text-xs.ml-2.border-l.border-border.px-2.py-0.5{class: if todo.status === 'completed' then 'line-through !text-tertiaryText' end}
+            = todo.description

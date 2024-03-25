@@ -7,4 +7,4 @@
     %p.text-tertiaryText.text-lg.mt-4.text-sm.max-w-sm
       The simplest todo app you'll ever use. No clutter, no ads, no tracking. Just you and your todos.
     .mt-8
-      = active_link_to 'get started', todos_path, class: 'text-tertiaryText bg-active text-xs border border-border px-4 py-2 rounded-md hover:bg-active/90'
+      = link_to 'get started', todos_path(view: 'all'), class: 'text-tertiaryText bg-active text-xs border border-border px-4 py-2 rounded-md hover:bg-active/90'

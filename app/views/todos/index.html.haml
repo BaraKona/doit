@@ -1,14 +1,18 @@
 .w-full.flex.max-w-screen-sm.mx-auto.p-2.my-12.flex-col.space-y-4
-  %input#todo-search.w-full.p-2.px-3.border.border-border.rounded-md.bg-active.text-xs.text-primaryText.placeholder-tertiaryText{placeholder: '+ search or add todos', type: 'text'}
+  .flex.gap-2.justify-end
+    = active_link_to 'all', todos_path(view:"all"), class: 'text-xs text-tertiaryText rounded-md hover:text-white cursor-pointer', active_class: '!text-primaryText', active: :exclusive
+    = active_link_to 'create', todos_path(view:"create"), class: 'text-xs text-tertiaryText rounded-md hover:text-white cursor-pointer', active_class: '!text-primaryText', active: :exclusive
+
+  -if is_active_link?(todos_path(view:"all"), :exclusive)
+    %input#todo-search.w-full.p-2.px-3.border.border-border.rounded-md.bg-active.text-xs.text-primaryText.placeholder-tertiaryText{placeholder: '+ search or add todos', type: 'text'}
 
 
-
-  - if @todos.any?
-    = render 'todo_list'
+  - if params[:view] == 'create'
+    = render 'create_todo'
   - else
-    = render 'no_todos'
-
-  - if @todos.any? { |todo| todo.completed? }
-    = render 'complete'
-
-
+    - if @todos.present? && @todos.any? && @todos.select(&:not_started?).any?
+      = render 'todo_list', todos: @todos.select(&:not_started?)
+    - else
+      = render 'no_todos'
+  - if @todos.present? && @todos.select(&:completed?).any?
+    = render 'complete', todos: @todos.select(&:completed?)

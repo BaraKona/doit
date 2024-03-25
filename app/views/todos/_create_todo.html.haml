@@ -1,0 +1,7 @@
+= form_with model: @todo, url: todos_path, method: :post, class: "flex flex-col gap-2" do |form|
+  = form.text_field 'todo[title]', class: 'p-2 px-3 border border-border rounded-md bg-active text-xs text-primaryText placeholder-tertiaryText', placeholder: 'name your todo', required: true
+  = form.text_field 'todo[description]', class: 'p-2 px-3 border border-border rounded-md bg-active text-xs text-primaryText placeholder-tertiaryText', placeholder: 'describe your todo', required: true
+
+  = form.select 'todo[priority]', Todo.priorities.keys, { prompt: 'select priority' }, class: 'p-2 px-3 border border-border rounded-md bg-active text-xs text-primaryText placeholder-tertiaryText', required: true
+
+  = form.submit 'Add', class: 'text-tertiaryText bg-active text-xs border border-border px-4 py-2 rounded-md hover:bg-active/90 cursor-pointer ml-auto'
