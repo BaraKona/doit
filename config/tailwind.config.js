@@ -19,6 +19,8 @@ module.exports = {
 				tertiaryText: "#ffffff38",
 				active: "#00000030",
 				border: "#ffffff10",
+				// nice aler color for darkmode
+				alert: "#ff6b6b",
 			},
 		},
 	},

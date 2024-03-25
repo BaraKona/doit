@@ -18,3 +18,5 @@
     = render 'complete', todos: @todos.select(&:completed?)
     .w-full.border.border-border.h-3.rounded-sm.flex.items-center
       .bg-emerald-400.h-2.rounded-sm{style: "width: #{((@todos.select(&:completed?).count.to_f / @todos.count.to_f) * 100).to_i}%"}
+    - if @todos.select(&:completed?).count == @todos.count
+      .text-center.text-xs.text-tertiaryText.mt-2 All todos are completed! 🎉

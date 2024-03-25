@@ -13,8 +13,9 @@ class SessionsController < ApplicationController
 
     if user.present? && user&.authenticate(params[:password])
       session[:user_id] = user.id
-      redirect_to todos_path
+      redirect_to todos_path(view: 'all')
     else
+      flash[:alert] = "Invalid email or password"
       render :new, status: :unprocessable_entity
     end
   end

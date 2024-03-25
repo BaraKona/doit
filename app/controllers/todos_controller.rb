@@ -1,5 +1,5 @@
 class TodosController < ApplicationController
-
+  before_action :check_user
   def index
     @todos = Todo.where(user_id: Current.user.id).order(priority: :desc)
   end
@@ -42,6 +42,13 @@ class TodosController < ApplicationController
 
   private
 
+
+  def check_user
+    if Current.user.blank?
+      flash[:alert] = "Please login to continue"
+      redirect_to signin_path
+    end
+  end
   def todo_params
     puts params
     params.require(:todo).permit(:title, :description, :priority, :id, :status)

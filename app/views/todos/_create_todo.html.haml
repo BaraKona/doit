@@ -1,6 +1,9 @@
 = form_with model: @todo, url: todos_path, method: :post, class: "flex flex-col gap-2" do |form|
+  - if flash[:alert]
+    .p-2.rounded-md.text-xs.mb-4.text-black{class: 'bg-alert'}
+      = flash[:alert]
   = form.text_field 'todo[title]', class: 'p-2 px-3 border border-border rounded-md bg-active text-xs text-primaryText placeholder-tertiaryText', placeholder: 'name your todo', required: true
-  = form.text_field 'todo[description]', class: 'p-2 px-3 border border-border rounded-md bg-active text-xs text-primaryText placeholder-tertiaryText', placeholder: 'describe your todo', required: true
+  = form.text_area 'todo[description]', class: 'p-2 px-3 border border-border rounded-md bg-active text-xs text-primaryText placeholder-tertiaryText', placeholder: 'describe your todo', required: true
 
   = form.select 'todo[priority]', Todo.priorities.keys, { prompt: 'select priority' }, class: 'p-2 px-3 border border-border rounded-md bg-active text-xs text-primaryText placeholder-tertiaryText', required: true
 

@@ -1,5 +1,8 @@
 -# signin form
 .max-w-screen-sm.mx-auto.mt-16
+  - if flash[:alert]
+    .p-2.rounded-md.text-xs.mb-4.text-black{class: 'bg-alert'}
+      = flash[:alert]
   = form_with model: @user, url: signin_path, method: :post, class: 'flex flex-col' do |form|
 
     = form.label :email, class: 'text-xs text-secondaryText'

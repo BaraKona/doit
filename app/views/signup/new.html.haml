@@ -1,5 +1,8 @@
 .max-w-screen-sm.mx-auto.mt-16
   = form_with model: @user, url: signup_path, method: :post, class: 'flex flex-col' do |form|
+    - if flash[:alert]
+      .p-2.rounded-md.text-xs.mb-4.text-black{class: 'bg-alert'}
+        = flash[:alert]
     = form.label :user_name, class: 'text-xs text-secondaryText'
     = form.text_field :user_name, class: 'p-2 px-3 border border-border rounded-md bg-active text-xs text-primaryText mb-4 mt-1 placeholder-tertiaryText', placeholder: 'cool_user123', required: true
 
@@ -10,7 +13,7 @@
     = form.password_field :password, class: 'p-2 px-3 border border-border rounded-md bg-active text-xs text-primaryText mb-4 mt-1 placeholder-tertiaryText', placeholder: 's0m3ComPLicAted!passW0rd', required: true
 
     = form.label :password_confirmation, class: 'text-xs text-secondaryText'
-    = form.password_field :password_confirmation, class: 'p-2 px-3 border border-border rounded-md bg-active text-xs text-primaryText mb-4 mt-1 placeholder-tertiaryText', placeholder: 's0m3ComPLicAted!passW0rd', required: true
+    = form.password_field :password_confirmation, class: 'p-2 w-full px-3 border border-border rounded-md bg-active text-xs text-primaryText mb-4 mt-1 placeholder-tertiaryText', placeholder: 's0m3ComPLicAted!passW0rd', required: true
 
     = form.submit 'sign up', class: 'text-tertiaryText bg-active text-xs border border-border px-4 py-2 rounded-md hover:bg-active/90 cursor-pointer ml-auto'
 
