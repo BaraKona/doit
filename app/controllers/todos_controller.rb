@@ -1,7 +1,12 @@
 class TodosController < ApplicationController
   before_action :check_user
   def index
-    @todos = Todo.where(user_id: Current.user.id).order(priority: :desc)
+    puts params
+    @todos = if params[:search].present?
+      Todo.where('title LIKE ?', "%#{params[:search]}%")
+    else
+      Todo.where(user_id: Current.user.id).order(priority: :desc)
+    end
   end
 
   def create
