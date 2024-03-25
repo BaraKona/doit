@@ -4,7 +4,7 @@
     completed
     .text-xs.text-secondaryText
       = "#{todos.count} items"
-  %hr.border-border
+  %hr.border-border.mb-2
   .flex.gap-1.flex-col
     - todos.each do |todo|
       = render 'todo_list_item', todo: todo

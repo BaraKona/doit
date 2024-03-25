@@ -9,15 +9,21 @@ class SessionsController < ApplicationController
   end
 
   def create
-    user = User.find_by(email: params[:email])
+    @user = User.find_by(email: user_params[:email])
 
-    if user.present? && user&.authenticate(params[:password])
-      session[:user_id] = user.id
-      redirect_to todos_path(view: 'all')
+    if @user&.authenticate(user_params[:password])
+      session[:user_id] = @user.id
+      redirect_to todos_path(view: "all")
     else
       flash[:alert] = "Invalid email or password"
-      render :new, status: :unprocessable_entity
+      render :new, status: :unauthorized
     end
+  end
+
+  private
+
+  def user_params
+    params.require(:user).permit(:email, :password)
   end
 
 end

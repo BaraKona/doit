@@ -30,7 +30,7 @@ class TodosController < ApplicationController
 
     logger.debug "Parameters: #{params.inspect}"
     logger.debug "Todo before update: #{@todo.inspect}"
-
+    @todo.updated_at = Time.now
     if @todo.update(todo_params)
       logger.debug "Todo after update: #{@todo.inspect}"
       redirect_to todos_path(view: 'all')
