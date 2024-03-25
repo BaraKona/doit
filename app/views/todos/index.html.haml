@@ -1,7 +1,7 @@
 .w-full.flex.max-w-screen-sm.mx-auto.p-2.my-12.flex-col.space-y-4
   .flex.gap-2.justify-end
-    = active_link_to 'all', todos_path(view:"all"), class: 'text-xs text-tertiaryText rounded-md hover:text-white cursor-pointer', active_class: '!text-primaryText', active: :exclusive
-    = active_link_to 'create', todos_path(view:"create"), class: 'text-xs text-tertiaryText rounded-md hover:text-white cursor-pointer', active_class: '!text-primaryText', active: :exclusive
+    = active_link_to 'all', todos_path(view:"all"), class: 'text-xs text-tertiaryText rounded-md hover:text-primaryText cursor-pointer', class_active: '!text-primaryText', active: :exclusive
+    = active_link_to 'create', todos_path(view:"create"), class: 'text-xs text-tertiaryText rounded-md hover:text-primaryText cursor-pointer', class_active: '!text-primaryText', active: :exclusive
 
   -if is_active_link?(todos_path(view:"all"), :exclusive)
     %input#todo-search.w-full.p-2.px-3.border.border-border.rounded-md.bg-active.text-xs.text-primaryText.placeholder-tertiaryText{placeholder: '+ search or add todos', type: 'text'}
